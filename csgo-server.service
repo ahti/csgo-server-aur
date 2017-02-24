@@ -1,0 +1,13 @@
+[Unit]
+Description=CSGO Game Server
+
+[Service]
+Type=simple
+Environment="LD_LIBRARY_PATH=/opt/csgo-server/bin/"
+WorkingDirectory=/opt/csgo-server
+User=csgo-server
+Group=csgo-server
+ExecStart=/opt/csgo-server/srcds_linux -game csgo +map de_dust2
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+post_install() {
+  if ! getent group csgo-server >/dev/null; then
+    groupadd -r csgo-server
+  fi
+  if ! getent passwd csgo-server >/dev/null; then
+    useradd -c 'CSGO Server user' -r -g csgo-server -d '/opt/csgo-server' -s /bin/bash csgo-server
+    passwd -l csgo-server >/dev/null
+  fi
+
+  chown -R csgo-server:csgo-server /opt/csgo-server
+}
